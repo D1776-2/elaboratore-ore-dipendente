@@ -1,0 +1,100 @@
+/* ---------- palette & reset ---------- */
+:root{
+  --primary:#f1cb30;
+  --primary-dark:#f1cb30;
+  --primary-darker:#1b3b75;
+  --bg:#f6f7fa;
+  --text:#222;
+  --border:#d0d5dd;
+  --row-alt:#fafafa;
+  --ord:#fff9c4;
+  --str:#d0f8ce;
+  --ass:#ffe0e0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.4;
+  padding:24px;
+}
+.container{max-width:1000px;margin:auto}
+
+/* ---------- titolo pagina ---------- */
+h2{
+  text-align:center;          /* centrato */
+  font-weight:700;
+  margin-bottom:28px;         /* spazio sotto */
+  padding-bottom:8px;         /* distanza linea–testo */
+  border-bottom:3px solid var(--primary-dark);  /* “solo linea” */
+}
+
+/* ---------- card istruzioni ---------- */
+#howto{
+  background:#fff;border:1px solid var(--border);
+  padding:16px 20px;border-radius:8px;margin-bottom:24px;
+}
+#howto h3{margin-bottom:8px;font-size:1.05rem;color:var(--primary-darker)}
+#howto ol{margin-left:20px}
+#howto li{margin:4px 0}
+
+/* ---------- pannello controlli ---------- */
+.controls{
+  display:flex;flex-wrap:wrap;align-items:flex-end;
+  gap:24px;margin-top:32px;
+}
+.controls .field{
+  display:flex;flex-direction:column;
+  min-width:160px;
+}
+.controls label{font-weight:500}
+.controls select,
+.controls input[type="file"],
+.controls input[type="month"]{
+  margin-top:4px;width:180px;
+  padding:6px 10px;border:1px solid var(--border);
+  border-radius:6px;font:inherit;
+}
+.controls button{
+  align-self:flex-start;margin-top:4px;
+  padding:6px 14px;font:inherit;font-weight:600;
+  border:1px solid var(--border);border-radius:6px;
+  background:var(--primary);cursor:pointer;transition:filter .15s;
+}
+.controls button[disabled]{opacity:.5;cursor:not-allowed}
+.controls button:not([disabled]):hover{filter:brightness(1.1)}
+
+/* ---------- tabella ---------- */
+table{
+  width:100%;border-collapse:collapse;margin-top:20px;
+  background:#fff;border:1px solid var(--border);font-size:.9rem;
+}
+th,td{padding:8px;border:1px solid var(--border);text-align:center}
+thead th{background:var(--primary);font-weight:700}
+tbody tr:nth-child(even){background:var(--row-alt)}
+tfoot td{font-weight:700;background:var(--primary-dark)}
+input.hhmm{width:88px;text-align:center;padding:4px}
+
+/* evidenziazioni */
+.nz-ord{background:var(--ord)}
+.nz-str{background:var(--str)}
+.nz-ass{background:var(--ass)}
+.invalid{background:#ffdddd}
+
+/* loader */
+#loader{
+  position:fixed;inset:0;background:#ffffffb3;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4em;font-weight:600;display:none;z-index:999;
+}
+
+/* ---------- responsive ---------- */
+@media(max-width:700px){
+  .controls{flex-direction:column;align-items:stretch}
+  .controls .field{width:100%}
+  .controls select,
+  .controls input[type="file"],
+  .controls input[type="month"]{width:100%}
+  table{font-size:.8rem}
+}

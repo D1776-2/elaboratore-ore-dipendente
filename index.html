@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Elaboratore Ore Dipendente</title>
+<link rel="stylesheet" href="/project/style.css"><!-- se vuoi spostare anche il CSS -->
+</head>
+<body>
+
+<h2>Elaboratore Ore Dipendente (import da Excel)</h2>
+
+<div class="container">
+
+  <!-- istruzioni -->
+  <section id="howto">
+    <h3>Come usare l’elaboratore</h3>
+    <ol>
+      <li>Scaricare la cartella <strong>.xlsx</strong> da <em>Geobadge</em></li>
+      <li>Caricare la <strong>lista dipendenti aggiornata</strong></li>
+      <li>Selezionare il <strong>dipendente</strong></li>
+      <li>Caricare il <strong>file Excel</strong></li>
+      <li>Scegliere il <strong>foglio</strong> da elaborare</li>
+      <li>Compilare eventuali <strong>causali</strong></li>
+      <li>Premere <strong>⤓ Esporta PDF</strong></li>
+    </ol>
+  </section>
+
+  <!-- pannello comandi -->
+  <form id="panel" class="controls" autocomplete="off">
+    <div class="field">
+      <label>Carica lista dipendenti:
+        <input type="file" id="dipListInput" accept=".json,.csv,.txt">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Dipendente:
+        <select id="dipendenteSelect"></select>
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Mese:
+        <input type="month" id="meseSelezionato">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>File .xlsx:
+        <input type="file" id="fileInput" accept=".xlsx,.xls">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Foglio:
+        <select id="sheetSelect" disabled>
+          <option>-- carica file --</option>
+        </select>
+      </label>
+    </div>
+
+    <button id="importBtn" type="button">🔄 Importa + Genera Tabella</button>
+    <button id="pdfBtn"    type="button" disabled>⤓ Esporta PDF</button>
+  </form>
+
+  <span id="nomeDip"></span>
+
+  <!-- wrapper scroll orizzontale mobile -->
+  <div class="scroll-x" id="tabellaContainer"></div>
+
+</div> <!-- /container -->
+
+<div id="loader">⏳ elaborazione…</div>
+
+<!-- datalist suggerimenti -->
+<datalist id="causaliList">
+  <option value="Ferie"><option value="Malattia">
+  <option value="Permesso"><option value="Rol">
+  <option value="Formazione">
+</datalist>
+
+<!-- LIBRERIE -->
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"
+        integrity="sha384-EnyY0/GSHQGSxSgMwaIPzSESbqoOLSexfnSMN2AP+39Ckmn92stwABZynq1JyzdT"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+        integrity="sha384-JcnsjUPPylna1s1fvi1u12X5qjY5OL56iySh75FdtrwhO/SWXgMjoVqcKyIIWOLk"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"
+        integrity="sha384-GbQVk5KsTZEMJtvSbtmGpderuiERKpKVVFucxROOKnIXvtg03h3pORjyyGlPD6UO"
+        crossorigin="anonymous"></script>
+
+<!-- entry-point JS (moduli che hai già) -->
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
